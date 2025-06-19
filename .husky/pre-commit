@@ -1,0 +1,2 @@
+echo "🔍 Validando lint..."
+npm run lint || { echo "❌ Lint falhou! Corrija os erros antes de fazer o commit."; exit 1; }

@@ -1,0 +1,4 @@
+echo "🔍 Validando build..."
+npm run build || { echo "❌ Build falhou! Corrija os erros antes de fazer push."; exit 1; }
+
+npm run test ||  { echo "❌ Os testes falharam! Corrija os erros antes de fazer push."; exit 1; }
