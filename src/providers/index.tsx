@@ -1,3 +1,5 @@
+import { RouterProvider } from './router-provider'
+
 export const RootProvider = () => {
-  return <div>learn-react</div>
+  return <RouterProvider />
 }
