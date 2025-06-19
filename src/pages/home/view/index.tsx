@@ -1,6 +1,10 @@
 import React from 'react'
 import { IHomeView } from './types'
 
-export const HomeView: React.FC<IHomeView> = ({ login }) => {
-  return <div onClick={login}>index</div>
+export const HomeView: React.FC<IHomeView> = () => {
+  return (
+    <main>
+      <header>sds</header>
+    </main>
+  )
 }
