@@ -1,3 +1,9 @@
 export interface IHomeView {
-  login: () => void
+  categories: {
+    id: string
+    description: string
+    estimatedCost: number
+    type: string
+    createdAt: string
+  }[]
 }

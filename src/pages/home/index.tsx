@@ -1,7 +1,9 @@
 import { HomeView } from './view'
-import { useLogin } from './hooks/useLogin'
+import { useCategory as useCategories } from './hooks/use-category'
 
 export const Home = () => {
-  const { signIn } = useLogin()
-  return <HomeView login={signIn} />
+  const { categories } = useCategories()
+
+  if (!categories) return
+  return <HomeView categories={categories} />
 }
