@@ -2,6 +2,8 @@
 
 @theme{
   --font-poppins: 'Poppins', sans-serif;
+  --color-primary:#A54613;
+  --color-primary-ghost:rgba(165,70,19,0.1);
 }
 
 :root {
