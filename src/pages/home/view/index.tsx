@@ -36,6 +36,11 @@ export const HomeView: React.FC<IHomeView> = ({ categories }) => {
         </div>
         <div>
           <ul>
+            {categories.length === 0 && (
+              <div className="mx-auto flex h-full w-10/11 items-center justify-center py-5 text-gray-400">
+                Não há categorias cadastradas
+              </div>
+            )}
             {categories.map(category => (
               <CostItem
                 amountMax={category.estimatedCost}
