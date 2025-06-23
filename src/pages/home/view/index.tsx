@@ -43,9 +43,9 @@ export const HomeView: React.FC<IHomeView> = ({ categories }) => {
             )}
             {categories.map(category => (
               <CostItem
-                amountMax={category.estimatedCost}
-                title={category.description}
-                createdAt={category.createdAt}
+                estimatedCost={category.estimatedCost}
+                currentCost={category.totalCost}
+                title={category.name}
                 type={category.type}
               />
             ))}

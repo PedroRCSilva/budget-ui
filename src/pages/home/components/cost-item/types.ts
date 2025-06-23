@@ -1,6 +1,6 @@
 export interface ICostItem {
   title: string
-  createdAt: string
-  amountMax: number
+  estimatedCost: number
+  currentCost: number
   type: string
 }
