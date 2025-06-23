@@ -9,7 +9,7 @@ api.interceptors.request.use(config => {
   const paths = ['/login', '/register']
   const token = document.cookie
     .split('; ')
-    .find(row => row.startsWith('token='))
+    .find(row => row.startsWith('access_token='))
     ?.split('=')[1]
 
   if (!paths.includes(config.url || '') && token) {
