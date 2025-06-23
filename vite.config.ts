@@ -13,7 +13,8 @@ export default defineConfig({
       '@pages': path.resolve(__dirname, '/src/pages'),
       '@services': path.resolve(__dirname, '/src/services'),
       '@constants': path.resolve(__dirname, '/src/constants'),
-      '@hooks': path.resolve(__dirname, '/src/hooks')
+      '@hooks': path.resolve(__dirname, '/src/hooks'),
+      '@models': path.resolve(__dirname, '/src/models')
     }
   }
 })
