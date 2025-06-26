@@ -1,26 +1,30 @@
 import { MonthEnum } from '@pages/home/view/types'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 export const useFilterCategory = () => {
   const [searchParams, setSearchParams] = useSearchParams()
 
-  const filterCategory = React.useCallback(
-    ({ month = MonthEnum.JUNE, page = 0, size = 30 }: { month?: MonthEnum; page?: number; size?: number }) => {
-      const queryParams = new URLSearchParams(searchParams.toString())
+  const filterCategory = ({ month, page, size }: { month?: MonthEnum; page?: number; size?: number }) => {
+    const queryParams = new URLSearchParams(searchParams.toString())
+    if (month) {
+      queryParams.set('startDate', month.START_DATE)
+      queryParams.set('endDate', month.END_DATE)
+    }
+    if (page) queryParams.set('page', page.toString())
+    if (size) queryParams.set('size', size.toString())
 
-      queryParams.set('month', month.toString())
-      queryParams.set('page', page.toString())
-      queryParams.set('size', size.toString())
-
-      setSearchParams(queryParams)
-    },
-    [searchParams, setSearchParams]
-  )
+    setSearchParams(queryParams)
+  }
 
   useEffect(() => {
-    filterCategory({})
-  }, [filterCategory])
+    filterCategory({
+      month: MonthEnum.JUNE,
+      page: 0,
+      size: 10
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return { filterCategory }
 }

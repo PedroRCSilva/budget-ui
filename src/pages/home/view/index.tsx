@@ -1,18 +1,24 @@
 import React from 'react'
-import { IHomeView } from './types'
+import { IHomeView, MonthEnum } from './types'
 import { Button } from '@components/button'
 import { IoMdAdd } from 'react-icons/io'
 import { SegmentedControl } from '../components/segmented-control'
 import { CostItem } from '../components/cost-item'
 
-export const HomeView: React.FC<IHomeView> = ({ categories }) => {
+export const HomeView: React.FC<IHomeView> = ({ categories, filterCategory }) => {
   return (
     <div className="flex flex-col gap-5">
       <header className="mx-auto w-11/12">
-        <SegmentedControl.Container defaultValue="Junho">
-          <SegmentedControl.Item value="Junho">Junho</SegmentedControl.Item>
-          <SegmentedControl.Item value="Julho">Julho</SegmentedControl.Item>
-          <SegmentedControl.Item value="Agosto">Agosto</SegmentedControl.Item>
+        <SegmentedControl.Container
+          defaultValue={MonthEnum.JUNE.NAME}
+          onChangeValue={name => {
+            filterCategory({
+              month: MonthEnum[name as keyof typeof MonthEnum]
+            })
+          }}>
+          <SegmentedControl.Item value={MonthEnum.JUNE.NAME}>Junho</SegmentedControl.Item>
+          <SegmentedControl.Item value={MonthEnum.JULY.NAME}>Julho</SegmentedControl.Item>
+          <SegmentedControl.Item value={MonthEnum.AUGUST.NAME}>Agosto</SegmentedControl.Item>
         </SegmentedControl.Container>
 
         <div className="mb-6 flex flex-col gap-2">
