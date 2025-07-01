@@ -1,10 +1,6 @@
 import { useEffect, useState, useSyncExternalStore } from 'react'
 import { QueryClient } from './query-client'
-
-export interface IUseFetch<T> {
-  queryFn: () => Promise<T>
-  queryKey: string
-}
+import { IUseFetch } from './types'
 
 export const useFetch = <T,>({ queryFn, queryKey }: IUseFetch<T>) => {
   const [prevQueryKey, setPrevQueryKey] = useState<string>(queryKey)

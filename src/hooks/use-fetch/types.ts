@@ -3,6 +3,7 @@ export interface QueryState<T, E = unknown> {
   error: E | null
   isLoading: boolean
 }
-export interface IFetch<T> {
-  promisseFn: () => Promise<T>
+export interface IUseFetch<T> {
+  queryFn: () => Promise<T>
+  queryKey: string
 }
