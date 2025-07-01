@@ -15,8 +15,8 @@ export const CostItem: React.FC<ICostItem> = ({ estimatedCost, currentCost, titl
           <p className="text-gray-500">{type}</p>
         </div>
         <div>
-          <strong className="font-semibold">{formatPrice(estimatedCost)}</strong>
-          <p className="text-right text-xs">{formatPrice(currentCost)}</p>
+          <strong className="font-semibold">{formatPrice(currentCost)}</strong>
+          <p className="text-right text-xs">{formatPrice(estimatedCost)}</p>
         </div>
       </div>
     </li>
