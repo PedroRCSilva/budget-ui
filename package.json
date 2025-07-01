@@ -10,7 +10,9 @@
     "preview": "vite preview",
     "prepare": "husky",
     "test": "jest  --restoreMocks --runInBand",
-    "format": "eslint --fix"
+    "format": "eslint --fix",
+    "generate:page": "node scripts/generate-page.js",
+    "generate:service": "node scripts/generate-service.js"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.9",
