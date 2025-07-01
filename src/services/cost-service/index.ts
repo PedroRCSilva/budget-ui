@@ -2,7 +2,7 @@ import { IPagination } from 'src/models/types'
 import { IHttpInstance } from '../types'
 import { ICostRequest, ICostResponse, ICostSearchParams } from './types'
 
-export const costService = (instance: IHttpInstance) => {
+export const CostService = (instance: IHttpInstance) => {
   const getCost = async (params: ICostSearchParams) =>
     instance.get<IPagination<ICostResponse>>('/costs', {
       params

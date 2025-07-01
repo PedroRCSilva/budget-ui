@@ -1,8 +1,8 @@
 import api from '@providers/api'
-import { categoryService } from './category-service'
-import { costService } from './cost-service'
+import { CategoryService } from './category-service'
+import { CostService } from './cost-service'
 
-const categoryClient = categoryService(api)
-const costClient = costService(api)
+const categoryClient = CategoryService(api)
+const costClient = CostService(api)
 
 export { categoryClient, costClient }
