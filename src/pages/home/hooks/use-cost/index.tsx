@@ -9,13 +9,15 @@ export const useCost = () => {
 
   const params = {
     startDate: searchParams.get('startDate'),
-    endDate: searchParams.get('endDate'),
-    page: searchParams.get('page'),
-    size: searchParams.get('startDate')
+    endDate: searchParams.get('endDate')
   }
 
-  const { data } = useFetch(() => costClient.getCost(params))
+  const { data } = useFetch({
+    queryFn: () => costClient.getCost(params),
+    queryKey: JSON.stringify(params)
+  })
 
   const costs = data?.data || paginationEmpty
+
   return { costs }
 }

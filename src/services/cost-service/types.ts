@@ -8,8 +8,8 @@ export interface ICostRequest {
 }
 
 export interface ICostSearchParams {
-  page: string | null
-  size: string | null
+  page?: string
+  size?: string
   startDate: string | null
   endDate: string | null
 }
