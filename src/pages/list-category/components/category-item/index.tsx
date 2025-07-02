@@ -1,11 +1,13 @@
 import React from 'react'
 import { IoMdPeople } from 'react-icons/io'
-import { ICostItem } from './types'
+import { ICategoryItem } from './types'
 import { formatPrice } from '@utils/formatters'
 
-export const CostItem: React.FC<ICostItem> = ({ estimatedCost, currentCost, title, type }) => {
+export const CategoryItem: React.FC<ICategoryItem> = ({ estimatedCost, currentCost, title, type, onClick }) => {
   return (
-    <li className="border-b border-gray-100 py-3">
+    <li
+      className="cursor-pointer border-b border-gray-100 py-3 transition duration-150 hover:bg-gray-100"
+      onClick={onClick}>
       <div className="mx-auto flex w-11/12 gap-4">
         <div className="bg-primary-ghost flex h-13 w-14 items-center justify-center rounded-full">
           <IoMdPeople size={22} className="text-primary" />{' '}
