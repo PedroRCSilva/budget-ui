@@ -3,14 +3,14 @@ import { IHomeView, MonthEnum } from './types'
 import { Button } from '@components/button'
 import { IoMdAdd } from 'react-icons/io'
 import { SegmentedControl } from '../components/segmented-control'
-import { CostItem } from '../components/cost-item'
+import { Outlet } from 'react-router-dom'
 
-export const HomeView: React.FC<IHomeView> = ({ categories, filterCategory }) => {
+export const HomeView: React.FC<IHomeView> = ({ filterCategory, defaultMonth }) => {
   return (
     <div className="flex flex-col gap-5">
       <header className="mx-auto w-11/12">
         <SegmentedControl.Container
-          defaultValue={MonthEnum.JUNE.NAME}
+          defaultValue={defaultMonth.NAME}
           onChangeValue={name => {
             filterCategory({
               month: MonthEnum[name as keyof typeof MonthEnum]
@@ -32,31 +32,13 @@ export const HomeView: React.FC<IHomeView> = ({ categories, filterCategory }) =>
         </div>
 
         <Button>
-          Cadastrar compromisso <IoMdAdd className="inline align-middle" size={25} />
+          Cadastrar gasto
+          <IoMdAdd className="inline align-middle" size={25} />
         </Button>
       </header>
       <hr className="text-gray-100" />
       <main>
-        <div className="mx-auto mb-4 flex w-11/12">
-          <h3 className="font-medium">Gastos mensais</h3>
-        </div>
-        <div>
-          <ul>
-            {categories.length === 0 && (
-              <div className="mx-auto flex h-full w-10/11 items-center justify-center py-5 text-gray-400">
-                Não há categorias cadastradas
-              </div>
-            )}
-            {categories.map(category => (
-              <CostItem
-                estimatedCost={category.estimatedCost}
-                currentCost={category.totalCost}
-                title={category.name}
-                type={category.type}
-              />
-            ))}
-          </ul>
-        </div>
+        <Outlet />
       </main>
     </div>
   )

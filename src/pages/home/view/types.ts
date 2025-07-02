@@ -1,11 +1,3 @@
-export interface ICategoryWithCosts {
-  id: string
-  name: string
-  totalCost: number
-  estimatedCost: number
-  type: string
-}
-
 const CURRENT_YEAR = new Date().getFullYear()
 
 export const MonthEnum = {
@@ -74,6 +66,6 @@ export const MonthEnum = {
 export type MonthEnum = (typeof MonthEnum)[keyof typeof MonthEnum]
 
 export interface IHomeView {
-  categories: ICategoryWithCosts[]
   filterCategory: ({ month, page, size }: { month?: MonthEnum; page?: number; size?: number }) => void
+  defaultMonth: MonthEnum
 }
