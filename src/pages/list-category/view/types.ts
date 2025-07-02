@@ -1,7 +1,7 @@
 export interface ICategoryWithCosts {
   id: string
   name: string
-  totalCost: number
+  currentCost: number
   estimatedCost: number
   type: string
 }

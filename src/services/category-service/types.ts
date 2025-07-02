@@ -10,4 +10,5 @@ export interface ICategoryResponse {
   estimatedCost: number
   type: 'FIXED' | 'VARIABLE'
   createdAt: string
+  currentCost: number
 }

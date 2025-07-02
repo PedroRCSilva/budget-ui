@@ -20,7 +20,7 @@ export const ListCategoryView: React.FC<IListCategoryView> = ({ categories, redi
               onClick={() => redirectCost(category.id)}
               key={category.id}
               estimatedCost={category.estimatedCost}
-              currentCost={category.totalCost}
+              currentCost={category.currentCost}
               title={category.name}
               type={category.type}
             />
