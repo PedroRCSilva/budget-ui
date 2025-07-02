@@ -1,6 +1,6 @@
 import { costClient } from '@services/index'
 
-import { useFetch } from '@hooks/use-fetch'
+import { useFetch } from '@hooks'
 import { paginationEmpty } from '@models/pagination'
 import { useSearchParams } from 'react-router-dom'
 
