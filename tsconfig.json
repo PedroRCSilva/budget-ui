@@ -12,9 +12,10 @@
       "@utils/*": ["src/utils/*"],
       "@pages/*": ["src/pages/*"],
       "@services/*": ["src/services/*"],
+      "@services": ["src/services/index"],
       "@constants/*": ["src/constants/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@models/*":["src/models/*"]
+      "@hooks": ["src/hooks/index"],
+      "@models/*": ["src/models/*"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
