@@ -7,7 +7,7 @@ const variants = {
   variants: {
     color: {
       primary: 'bg-primary text-white font-medium',
-      secondary: ''
+      secondary: 'text-primary'
     }
   }
 }

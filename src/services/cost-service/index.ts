@@ -7,6 +7,12 @@ export const CostService = (instance: IHttpInstance) => {
     instance.get<IPagination<ICostResponse>>('/costs', {
       params
     })
+
+  const getCostByCategory = async (categoryId: string, params: ICostSearchParams) =>
+    instance.get<IPagination<ICostResponse>>(`/categories/${categoryId}/costs`, {
+      params
+    })
+
   const getCostById = async (id: string) => instance.get<ICostResponse>(`/costs/${id}`)
   const createCost = async (data: ICostRequest) => instance.post<ICostRequest, ICostResponse>('/costs', data)
   const updateCost = async (id: string, data: ICostRequest) => instance.put<ICostRequest, ICostResponse>(`/costs`, data)
@@ -15,6 +21,7 @@ export const CostService = (instance: IHttpInstance) => {
   return {
     getCost,
     getCostById,
+    getCostByCategory,
     createCost,
     updateCost,
     deleteCost

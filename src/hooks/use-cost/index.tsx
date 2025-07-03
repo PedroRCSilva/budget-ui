@@ -21,3 +21,21 @@ export const useCost = () => {
 
   return { costs }
 }
+
+export const useCostByCategory = (id: string) => {
+  const [searchParams] = useSearchParams()
+
+  const params = {
+    startDate: searchParams.get('startDate'),
+    endDate: searchParams.get('endDate')
+  }
+
+  const { data } = useFetch({
+    queryFn: () => costClient.getCostByCategory(id, params),
+    queryKey: `costs-category-${id}-${JSON.stringify(params)}`
+  })
+
+  const costs = data?.data || paginationEmpty
+
+  return { costs }
+}

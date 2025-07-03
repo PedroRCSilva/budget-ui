@@ -1,3 +1,5 @@
+import { ICostResponse } from '@services/cost-service/types'
+
 export interface ICategoryRequest {
   id: string
   description?: string
@@ -11,4 +13,5 @@ export interface ICategoryResponse {
   type: 'FIXED' | 'VARIABLE'
   createdAt: string
   currentCost: number
+  costs: ICostResponse[]
 }

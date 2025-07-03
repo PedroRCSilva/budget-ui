@@ -7,9 +7,3 @@ export const useCategory = () => {
   const categories = data?.data ? data?.data : paginationEmpty
   return { categories }
 }
-
-export const useCategoryById = (id: string) => {
-  const { data } = useFetch({ queryFn: () => categoryClient.getCategoryById(id), queryKey: `category${id}` })
-  const category = data?.data
-  return { category }
-}

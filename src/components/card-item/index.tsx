@@ -1,9 +1,15 @@
 import React from 'react'
 import { IoMdPeople } from 'react-icons/io'
-import { ICategoryItem } from './types'
+import { ICardItem } from './types'
 import { formatPrice } from '@utils/formatters'
 
-export const CategoryItem: React.FC<ICategoryItem> = ({ estimatedCost, currentCost, title, type, onClick }) => {
+export const CardItem: React.FC<ICardItem> = ({
+  estimatedValue: estimatedCost,
+  amount: currentCost,
+  title,
+  type,
+  onClick
+}) => {
   return (
     <li
       className="cursor-pointer border-b border-gray-100 py-3 transition duration-150 hover:bg-gray-100"
@@ -17,8 +23,8 @@ export const CategoryItem: React.FC<ICategoryItem> = ({ estimatedCost, currentCo
           <p className="text-gray-500">{type}</p>
         </div>
         <div>
-          <strong className="font-semibold">{formatPrice(currentCost)}</strong>
-          <p className="text-right text-xs">{formatPrice(estimatedCost)}</p>
+          {currentCost && <strong className="font-semibold">{formatPrice(currentCost)}</strong>}
+          {estimatedCost && <p className="text-right text-xs">{formatPrice(estimatedCost)}</p>}
         </div>
       </div>
     </li>

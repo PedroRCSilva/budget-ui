@@ -1,6 +1,6 @@
-import { useCategoryById } from '@hooks'
+import { useCostByCategory } from '@hooks'
 
 export const useListCost = ({ id }: { id: string }) => {
-  const { category } = useCategoryById(id)
-  return { category }
+  const { costs } = useCostByCategory(id)
+  return { costs }
 }

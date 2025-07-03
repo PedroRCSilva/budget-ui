@@ -4,7 +4,9 @@ import { ICategoryRequest, ICategoryResponse } from './types'
 
 export const CategoryService = (instance: IHttpInstance) => {
   const getCategory = async () => instance.get<IPagination<ICategoryResponse>>('/categories')
-  const getCategoryById = async (id: string) => instance.get<ICategoryResponse>(`/category/${id}`)
+  const getCategoryById = async (id: string) => instance.get<ICategoryResponse>(`/categories/${id}`)
+  const getCostsByCategory = async (id: string) =>
+    instance.get<IPagination<ICategoryResponse>>(`/categories/${id}/costs`)
   const createCategory = async (data: ICategoryRequest) =>
     instance.post<ICategoryRequest, ICategoryResponse>('/category', data)
   const updateCategory = async (id: string, data: ICategoryRequest) =>
@@ -14,6 +16,7 @@ export const CategoryService = (instance: IHttpInstance) => {
   return {
     getCategory,
     getCategoryById,
+    getCostsByCategory,
     createCategory,
     updateCategory,
     deleteCategory

@@ -1,6 +1,6 @@
 import React from 'react'
 import { IListCategoryView } from './types'
-import { CategoryItem } from '../components'
+import { CardItem } from '@components/card-item'
 
 export const ListCategoryView: React.FC<IListCategoryView> = ({ categories, redirectCost }) => {
   return (
@@ -16,11 +16,11 @@ export const ListCategoryView: React.FC<IListCategoryView> = ({ categories, redi
             </div>
           )}
           {categories.map(category => (
-            <CategoryItem
+            <CardItem
               onClick={() => redirectCost(category.id)}
               key={category.id}
-              estimatedCost={category.estimatedCost}
-              currentCost={category.currentCost}
+              estimatedValue={category.estimatedCost}
+              amount={category.currentCost}
               title={category.name}
               type={category.type}
             />

@@ -3,9 +3,11 @@ import { IHomeView, MonthEnum } from './types'
 import { Button } from '@components/button'
 import { IoMdAdd } from 'react-icons/io'
 import { SegmentedControl } from '../components/segmented-control'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 
 export const HomeView: React.FC<IHomeView> = ({ filterCategory, defaultMonth }) => {
+  const navigate = useNavigate()
+
   return (
     <div className="flex flex-col gap-5">
       <header className="mx-auto w-11/12">
@@ -31,10 +33,16 @@ export const HomeView: React.FC<IHomeView> = ({ filterCategory, defaultMonth }) 
           </p>
         </div>
 
-        <Button>
-          Cadastrar gasto
-          <IoMdAdd className="inline align-middle" size={25} />
-        </Button>
+        <div className="flex max-w-[400px] flex-col gap-y-5">
+          <Button onClick={() => navigate('/create-cost')}>
+            Cadastrar saida
+            <IoMdAdd className="inline align-middle" size={25} />
+          </Button>
+          <Button color="secondary" onClick={() => navigate('/create-cost')}>
+            Cadastrar categoria
+            <IoMdAdd className="inline align-middle" size={25} />
+          </Button>
+        </div>
       </header>
       <hr className="text-gray-100" />
       <main>

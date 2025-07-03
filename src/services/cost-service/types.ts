@@ -19,6 +19,7 @@ export interface ICostResponse {
   amount: number
   category: {
     id: string
+    description: string
   }
   createdAt: string
 }
