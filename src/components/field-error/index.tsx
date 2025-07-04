@@ -11,7 +11,7 @@ export const FieldError: React.FC<{
       {children}
       {error?.message && (
         <div className="mt-1">
-          <p className="px-1 text-xs text-red-500">{error.message}</p>
+          <p className="px-1 text-xs font-medium text-red-500">{error.message}</p>
         </div>
       )}
     </div>
