@@ -1,6 +1,7 @@
-import { HTMLAttributes, ReactNode } from 'react'
+import { ReactNode } from 'react'
 
-export interface IButton extends HTMLAttributes<HTMLButtonElement> {
+export interface IButton
+  extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   color?: 'primary' | 'secondary'
   isLoading?: boolean
   children?: ReactNode
