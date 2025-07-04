@@ -6,7 +6,7 @@ export const Label: React.FC<ILabel> = ({ Icon, value, error, ...props }) => {
   return (
     <div className={clsx('mb-2 flex gap-x-2', error && 'text-red-500')}>
       {Icon && <Icon />}
-      <label className="text-xs" {...props}>
+      <label className="text-gray-[#2a2a2a] text-sm font-normal" {...props}>
         {value}
       </label>
     </div>

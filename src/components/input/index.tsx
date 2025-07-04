@@ -2,13 +2,27 @@ import React from 'react'
 import { Input } from '@components/shadcn/input'
 import { Label } from '@components/label'
 import { IInputPrimary } from './types'
-import clsx from 'clsx'
+import { cn } from '@utils/cn'
 
-export const InputPrimary: React.FC<IInputPrimary> = ({ label, error, Icon, ...props }) => {
+export const InputPrimary: React.FC<IInputPrimary> = ({
+  label,
+  error,
+  type = 'text',
+  Icon,
+  onChange,
+  maskFunction,
+  ...props
+}) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (maskFunction) e.target.value = maskFunction(e.target.value)
+
+    if (onChange) onChange(e)
+  }
+
   return (
     <div>
       {label && <Label value={label} error={error} Icon={Icon} />}
-      <Input {...props} className={clsx(error && 'border-red-500')} />
+      <Input type={type} {...props} className={cn(error && 'border-red-500')} onChange={handleChange} />
     </div>
   )
 }
