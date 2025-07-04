@@ -6,4 +6,4 @@ export type FieldControllerProps<T extends FieldValues, N extends Path<T>, P> = 
   name: N
   control: Control<T>
   Component: React.ComponentType<ComponentProps<T, N, P>>
-} & P
+} & Omit<P, 'error' | 'ref'>

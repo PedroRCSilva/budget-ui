@@ -15,12 +15,13 @@ export const FieldController = <T extends FieldValues, N extends Path<T>, P>({
       control={control}
       render={({ field, fieldState }) => {
         const props = {
+          ...rest,
           error: fieldState.error
         }
 
         return (
           <FieldError error={fieldState?.error}>
-            <Component {...field} {...(rest as P)} {...(props as P)} />
+            <Component {...field} {...(props as P)} />
           </FieldError>
         )
       }}
