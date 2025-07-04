@@ -46,7 +46,7 @@ const Item: React.FC<ItemProps> = ({ children, value }) => {
           checked={selectedValue === value}
           onChange={() => onChangeValue(value)}
           value={value}
-          className="peer absolute h-full w-full opacity-0"
+          className="peer absolute h-full w-full cursor-pointer opacity-0"
           aria-checked={selectedValue === value}
           tabIndex={selectedValue === value ? 0 : -1}
         />
