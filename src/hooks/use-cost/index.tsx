@@ -3,6 +3,8 @@ import { costClient } from '@services/index'
 import { useFetch } from '@hooks'
 import { paginationEmpty } from '@models/pagination'
 import { useSearchParams } from 'react-router-dom'
+import { ICostRequest } from '@services/cost-service/types'
+import { useState } from 'react'
 
 export const useCost = () => {
   const [searchParams] = useSearchParams()
@@ -38,4 +40,21 @@ export const useCostByCategory = (id: string) => {
   const costs = data?.data || paginationEmpty
 
   return { costs }
+}
+
+export const useCreateCost = () => {
+  const [isLoading, setIsLoading] = useState(false)
+
+  const mutationAsync = async (data: ICostRequest) => costClient.createCost(data)
+
+  const mutation = (data: ICostRequest) => {
+    setIsLoading(true)
+    costClient.createCost(data).finally(() => setIsLoading(false))
+  }
+
+  return {
+    mutationAsync,
+    mutation,
+    isLoading
+  }
 }
