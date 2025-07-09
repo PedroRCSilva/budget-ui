@@ -22,7 +22,12 @@ export const InputPrimary: React.FC<IInputPrimary> = ({
   return (
     <div>
       {label && <Label value={label} error={error} Icon={Icon} />}
-      <Input type={type} {...props} className={cn(error && 'border-red-500')} onChange={handleChange} />
+      <Input
+        type={type}
+        {...props}
+        className={cn(error && 'border-red-500 focus-visible:ring-red-500')}
+        onChange={handleChange}
+      />
     </div>
   )
 }
