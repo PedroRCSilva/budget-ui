@@ -2,7 +2,7 @@ export const sanitizePrice = (price: string) => {
   const cleanPrefix = price?.replace('R$', '')
   const cleanedValue = cleanPrefix.replace(/[,.]/g, '')
   const numericValue = parseFloat(cleanedValue) / 100
-  return numericValue
+  return numericValue || 0
 }
 
 export function formatPrice(value: number, locale: string = 'pt-BR', currency: string = 'BRL'): string {
