@@ -3,7 +3,8 @@ import { IHttpInstance } from '../types'
 import { ICategoryRequest, ICategoryResponse } from './types'
 
 export const CategoryService = (instance: IHttpInstance) => {
-  const getCategory = async () => instance.get<IPagination<ICategoryResponse>>('/categories')
+  const getCategory = async (searchParams?: URLSearchParams) =>
+    instance.get<IPagination<ICategoryResponse>>(`/categories?${searchParams?.toString()}`)
   const getCategoryById = async (id: string) => instance.get<ICategoryResponse>(`/categories/${id}`)
   const getCostsByCategory = async (id: string) =>
     instance.get<IPagination<ICategoryResponse>>(`/categories/${id}/costs`)

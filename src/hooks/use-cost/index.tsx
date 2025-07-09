@@ -1,10 +1,10 @@
 import { costClient } from '@services/index'
 
-import { useFetch } from '@hooks'
 import { paginationEmpty } from '@models/pagination'
 import { useSearchParams } from 'react-router-dom'
 import { ICostRequest } from '@services/cost-service/types'
 import { useState } from 'react'
+import { useFetch } from '../use-fetch'
 
 export const useCost = () => {
   const [searchParams] = useSearchParams()
