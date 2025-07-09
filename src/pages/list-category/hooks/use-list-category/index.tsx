@@ -4,7 +4,9 @@ import { CategoryTypeEnum } from './types'
 
 export const useListCategory = () => {
   const [searchParams] = useSearchParams()
-  const { categories } = useCategory()
+  const { categories } = useCategory({
+    searchParams
+  })
   const navigate = useNavigate()
 
   const categoryWithCost = categories.content.map(element => ({
@@ -16,7 +18,7 @@ export const useListCategory = () => {
   }))
 
   const redirectCost = (id: string) => {
-    navigate(`/list-costs/${id}?${searchParams.toString()}`)
+    navigate(`/gerenciamento/list-costs/${id}?${searchParams.toString()}`)
   }
 
   return {

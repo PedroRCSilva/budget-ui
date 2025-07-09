@@ -3,7 +3,7 @@ import { tv } from 'tailwind-variants'
 import { IButton } from './type'
 
 const variants = {
-  base: 'group px-4 py-2 border rounded-lg cursor-pointer font-medium disabled:bg-gray-200 disabled:border-gray-200 disabled:text-white disabled:cursor-not-allowed',
+  base: 'group px-4 py-4 border rounded-lg cursor-pointer font-medium disabled:bg-gray-200 disabled:border-gray-200 disabled:text-white disabled:cursor-not-allowed',
   variants: {
     color: {
       primary: 'bg-primary text-white font-medium',

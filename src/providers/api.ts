@@ -1,12 +1,13 @@
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 
 const api = axios.create({
   baseURL: 'http://localhost:8004/api',
   timeout: 360
 })
 
+const paths = ['/login', '/register']
+
 api.interceptors.request.use(config => {
-  const paths = ['/login', '/register']
   const token = document.cookie
     .split('; ')
     .find(row => row.startsWith('access_token='))
@@ -17,5 +18,19 @@ api.interceptors.request.use(config => {
   }
   return config
 })
+
+api.interceptors.response.use(
+  response => response,
+  (error: AxiosError) => {
+    if (
+      error.response &&
+      !paths.includes(error.config?.url || '') &&
+      (error.response.status === 401 || error.response.status === 403)
+    ) {
+      window.location.href = '/'
+    }
+    return Promise.reject(error)
+  }
+)
 
 export default api
