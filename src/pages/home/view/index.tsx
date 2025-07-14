@@ -34,11 +34,11 @@ export const HomeView: React.FC<IHomeView> = ({ filterCategory, defaultMonth }) 
         </div>
 
         <div className="flex max-w-[400px] flex-col gap-y-5">
-          <Button onClick={() => navigate('/create-cost')}>
+          <Button onClick={() => navigate('/gerenciamento/create-cost')}>
             Cadastrar saida
             <IoMdAdd className="inline align-middle" size={25} />
           </Button>
-          <Button color="secondary" onClick={() => navigate('/create-cost')}>
+          <Button color="secondary" onClick={() => navigate('/gerenciamento/create-category')}>
             Cadastrar categoria
             <IoMdAdd className="inline align-middle" size={25} />
           </Button>
