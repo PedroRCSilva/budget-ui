@@ -1,7 +1,7 @@
 import { ICostResponse } from '@services/cost-service/types'
 
 export interface ICategoryRequest {
-  id: string
+  id?: string
   description?: string
   estimatedCost?: number
   type?: 'FIXED' | 'VARIABLE'

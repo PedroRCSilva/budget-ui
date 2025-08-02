@@ -14,13 +14,21 @@ const variants = {
 
 const button = tv(variants)
 
+const loading = tv({
+  base: 'absolute inset-0 flex items-center justify-center',
+  variants: {
+    color: {
+      primary: 'border-t-transparent border-r-transparent border-b-white',
+      secondary: 'border-t-transparent border-r-transparent border-b-white'
+    }
+  }
+})
+
 export const Button: React.FC<IButton> = ({ color = 'primary', isLoading, className, children, ...props }) => {
   return (
     <button type="button" className={button({ className, color })} {...props}>
       {children}
-      {isLoading && (
-        <div className="border-b-primary border-r-primary border-t-primary ml-2 inline-block h-4 w-4 animate-spin rounded-full border-2 border-transparent align-middle group-hover:border-t-white group-hover:border-r-white group-hover:border-b-white" />
-      )}
+      {isLoading && <div className={loading({ color })} />}
     </button>
   )
 }

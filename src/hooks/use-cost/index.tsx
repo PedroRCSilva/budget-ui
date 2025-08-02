@@ -58,3 +58,48 @@ export const useCreateCost = () => {
     isLoading
   }
 }
+
+export const useUpdateCost = () => {
+  const [isLoading, setIsLoading] = useState(false)
+
+  const mutationAsync = async (data: ICostRequest) => costClient.updateCost(data)
+
+  const mutation = (data: ICostRequest) => {
+    setIsLoading(true)
+    costClient.updateCost(data).finally(() => setIsLoading(false))
+  }
+
+  return {
+    mutationAsync,
+    mutation,
+    isLoading
+  }
+}
+
+export const useCostById = (id: string) => {
+  const { data } = useFetch({
+    queryFn: () => costClient.getCostById(id),
+    queryKey: `cost-${id}`
+  })
+
+  const cost = data?.data
+
+  return { cost }
+}
+
+export const useRemoveCost = () => {
+  const [isLoading, setIsLoading] = useState(false)
+
+  const mutationAsync = async (id: string) => costClient.deleteCost(id)
+
+  const mutation = (id: string) => {
+    setIsLoading(true)
+    costClient.deleteCost(id).finally(() => setIsLoading(false))
+  }
+
+  return {
+    mutationAsync,
+    mutation,
+    isLoading
+  }
+}

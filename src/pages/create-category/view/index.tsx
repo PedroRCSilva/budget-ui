@@ -9,7 +9,7 @@ import { Button } from '@components/button'
 import { useNavigate } from 'react-router-dom'
 import { CategoryTypeEnum } from '@pages/list-category/hooks/use-list-category/types'
 
-export const CreateCategoryView: React.FC<ICreateCategoryView> = ({ control, handleSubmit }) => {
+export const CreateCategoryView: React.FC<ICreateCategoryView> = ({ control, handleSubmit, title, onRemove }) => {
   const navigate = useNavigate()
 
   return (
@@ -20,7 +20,7 @@ export const CreateCategoryView: React.FC<ICreateCategoryView> = ({ control, han
           onClick={() => navigate(-1)}>
           <IoMdArrowRoundBack size={20} className="w-10 text-black" />
         </Button>
-        <h2 className="text-lg font-medium">Cadastrar categoria</h2>
+        <h2 className="flex-1 text-lg font-medium">{title}</h2>
       </header>
       <main className="mx-auto my-auto flex min-h-[88vh] w-10/12 gap-5 py-5">
         <form className="flex flex-1 flex-col justify-between" onSubmit={handleSubmit}>
@@ -51,9 +51,21 @@ export const CreateCategoryView: React.FC<ICreateCategoryView> = ({ control, han
               ]}
             />
           </div>
-          <Button color="primary" className="mx-auto mt-5 w-full py-3" isLoading={false} type="submit">
-            Adicionar
-          </Button>
+          <div>
+            <Button color="primary" className="mx-auto mt-5 w-full py-3" type="submit">
+              Salvar
+            </Button>
+            {onRemove && (
+              <Button
+                color="secondary"
+                className="mx-auto mt-5 w-full py-3"
+                isLoading={false}
+                type="button"
+                onClick={onRemove}>
+                Excluir
+              </Button>
+            )}
+          </div>
         </form>
       </main>
     </>

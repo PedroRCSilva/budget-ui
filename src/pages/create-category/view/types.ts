@@ -5,4 +5,6 @@ import { schemaCategory } from '../data/schema'
 export interface ICreateCategoryView {
   control: Control<z.infer<typeof schemaCategory>>
   handleSubmit: () => void
+  title: string
+  onRemove?: () => void
 }

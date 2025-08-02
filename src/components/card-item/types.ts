@@ -4,4 +4,5 @@ export interface ICardItem {
   amount?: number
   type: string
   onClick?: () => void
+  onEdit?: () => void
 }

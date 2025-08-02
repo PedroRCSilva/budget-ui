@@ -17,6 +17,6 @@ export const schemaCategory = z.object({
     message: 'Insira o valor maior que R$ 0,00'
   }),
   type: z.nativeEnum(CategoryTypeEnum, {
-    message: 'Insira o tipo de custo'
+    errorMap: () => ({ message: 'Selecione um tipo de categoria' })
   })
 })

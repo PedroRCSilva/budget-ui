@@ -1,7 +1,7 @@
 import axios, { AxiosError } from 'axios'
 
 const api = axios.create({
-  baseURL: 'http://localhost:8004/api',
+  baseURL: 'http://192.168.18.7:8004/api',
   timeout: 360
 })
 

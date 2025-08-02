@@ -9,10 +9,10 @@ export const CategoryService = (instance: IHttpInstance) => {
   const getCostsByCategory = async (id: string) =>
     instance.get<IPagination<ICategoryResponse>>(`/categories/${id}/costs`)
   const createCategory = async (data: ICategoryRequest) =>
-    instance.post<ICategoryRequest, ICategoryResponse>('/category', data)
-  const updateCategory = async (id: string, data: ICategoryRequest) =>
-    instance.put<ICategoryRequest, ICategoryResponse>(`/category/${id}`, data)
-  const deleteCategory = async (id: string) => instance.delete<void>(`/category/${id}`)
+    instance.post<ICategoryRequest, ICategoryResponse>('/categories', data)
+  const updateCategory = async (data: ICategoryRequest) =>
+    instance.patch<ICategoryRequest, ICategoryResponse>(`/categories`, data)
+  const deleteCategory = async (id: string) => instance.delete<void>(`/categories/${id}`)
 
   return {
     getCategory,

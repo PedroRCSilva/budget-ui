@@ -21,8 +21,13 @@ export const useListCategory = () => {
     navigate(`/gerenciamento/list-costs/${id}?${searchParams.toString()}`)
   }
 
+  const redirectEditCategory = (id: string) => {
+    navigate(`/gerenciamento/update-category/${id}?${searchParams.toString()}`)
+  }
+
   return {
     categoryWithCost,
-    redirectCost
+    redirectCost,
+    redirectEditCategory
   }
 }

@@ -8,7 +8,7 @@ import { formatPrice, sanitizePrice } from '@utils/formatters'
 import { IoMdArrowRoundBack } from 'react-icons/io'
 import { useNavigate } from 'react-router-dom'
 
-export const CreateCostView = ({ control, onSubmit, options, isLoading }: ICreateCostView) => {
+export const CreateCostView = ({ control, onSubmit, options, isLoading, title, onRemove }: ICreateCostView) => {
   const navigate = useNavigate()
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -25,7 +25,7 @@ export const CreateCostView = ({ control, onSubmit, options, isLoading }: ICreat
           onClick={() => navigate(-1)}>
           <IoMdArrowRoundBack size={20} className="w-10 text-black" />
         </Button>
-        <h2 className="text-lg font-medium">Cadastrar saída financeira</h2>
+        <h2 className="text-lg font-medium">{title}</h2>
       </header>
       <main className="mx-auto my-auto flex min-h-[88vh] w-10/12 gap-5 py-5">
         <form className="flex flex-1 flex-col justify-between" onSubmit={handleSubmit}>
@@ -48,9 +48,21 @@ export const CreateCostView = ({ control, onSubmit, options, isLoading }: ICreat
               values={options}
             />
           </div>
-          <Button color="primary" className="mx-auto mt-5 w-full py-3" isLoading={isLoading} type="submit">
-            Adicionar
-          </Button>
+          <div>
+            <Button color="primary" className="mx-auto mt-5 w-full py-3" isLoading={isLoading} type="submit">
+              Salvar
+            </Button>
+            {onRemove && (
+              <Button
+                onClick={onRemove}
+                color="primary"
+                className="mx-auto mt-5 w-full py-3"
+                isLoading={isLoading}
+                type="button">
+                Excluir
+              </Button>
+            )}
+          </div>
         </form>
       </main>
     </>
