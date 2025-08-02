@@ -1,84 +1,165 @@
-# Clean Architecture Frontend
+# FinanceApp - Sistema de Controle de Orçamento Pessoal
 
-This repository contains an implementation a=of a front-end project using React, following Clean Architecture principes. This objective is to maintain an organized structure, scalability, and ease of maintenance.
+Aplicação web para gerenciamento financeiro pessoal, desenvolvida com React e TypeScript seguindo os princípios de Clean Architecture. O sistema permite controlar gastos mensais através de categorias e acompanhar o orçamento de forma organizada.
 
-## Project Structure
+## 📋 Funcionalidades Principais
 
-The following is the main structure project:
+### 🔐 Autenticação
+- **Login de usuário** com email e senha
+- Autenticação via token JWT
+- Opção de login com Google (interface preparada)
+- Redirecionamento automático para área logada
+
+### 📊 Dashboard Principal
+- **Visão geral mensal** do orçamento
+- Seletor de mês (atual + próximos 2 meses)
+- **Resumo financeiro**:
+  - Total planejado vs. total gasto
+  - Valor restante do orçamento
+  - Progresso visual dos gastos
+- Acesso rápido para cadastro de gastos e categorias
+
+### 🏷️ Gerenciamento de Categorias
+- **Listar categorias** criadas pelo usuário
+- **Criar nova categoria** com:
+  - Título/descrição
+  - Custo estimado mensal
+  - Tipo: Fixo ou Variável
+- **Editar categorias** existentes
+- **Excluir categorias**
+- Visualização do progresso: valor gasto vs. valor estimado
+
+### 💰 Controle de Gastos (Saídas)
+- **Cadastrar novo gasto** com:
+  - Descrição do gasto
+  - Valor da saída
+  - Categoria associada
+- **Listar gastos** por categoria
+- **Editar gastos** existentes
+- **Excluir gastos**
+- Histórico de gastos com filtros por data
+
+### 📱 Interface e Experiência
+- **Design responsivo** para mobile e desktop
+- **Navegação intuitiva** com breadcrumbs
+- **Feedback visual** para ações do usuário
+- **Formatação automática** de valores monetários
+- **Validação de formulários** com Zod
+
+## 🛠️ Tecnologias Utilizadas
+
+### Frontend
+- **React 19** - Biblioteca para interfaces de usuário
+- **TypeScript** - Tipagem estática para JavaScript
+- **React Router Dom** - Roteamento SPA
+- **React Hook Form** - Gerenciamento de formulários
+- **Zod** - Validação de esquemas
+
+### Estilização
+- **TailwindCSS 4** - Framework CSS utilitário
+- **Radix UI** - Componentes acessíveis
+- **Lucide React** - Ícones
+- **React Icons** - Biblioteca de ícones
+
+### Ferramentas de Desenvolvimento
+- **Vite** - Build tool e dev server
+- **Jest** - Framework de testes
+- **ESLint** - Linting de código
+- **Prettier** - Formatação de código
+- **Husky** - Git hooks
+
+### Comunicação
+- **Axios** - Cliente HTTP para APIs
+- Interceptors para autenticação automática
+- Tratamento de erros centralizado
+
+## 🚀 Como Inicializar o Projeto
+
+### Pré-requisitos
+- Node.js (versão 18 ou superior)
+- npm ou yarn
+- Acesso à API backend (configurada em `http://192.168.18.7:8004/api`)
+
+### Instalação
+
+1. **Clone o repositório** (se aplicável)
+   ```bash
+   git clone <url-do-repositorio>
+   cd budget-ui
+   ```
+
+2. **Instale as dependências**
+   ```bash
+   npm install
+   # ou
+   yarn install
+   ```
+
+3. **Configure a URL da API**
+   - Edite o arquivo `src/providers/api.ts`
+   - Altere a `baseURL` se necessário
+
+4. **Inicie o servidor de desenvolvimento**
+   ```bash
+   npm run dev
+   # ou
+   yarn dev
+   ```
+
+5. **Acesse a aplicação**
+   - Abra o navegador em `http://localhost:5173`
+   - Faça login com suas credenciais
+
+### Scripts Disponíveis
+
+```bash
+# Desenvolvimento
+npm run dev              # Inicia servidor de desenvolvimento
+npm run preview          # Visualiza build de produção
+
+# Build e Deploy
+npm run build            # Compila para produção
+
+# Qualidade de Código
+npm run lint             # Executa ESLint
+npm run format           # Formata código com ESLint
+npm run test             # Executa testes
+
+# Geração de Código
+npm run generate:page    # Gera nova página
+npm run generate:service # Gera novo serviço
+```
+
+## 📁 Estrutura de Arquivos
 
 ```
-clean-architure-front/
-├── src/
-│   ├── components/             # Reusable Components 
-│   ├── constants/              # Global Constants
-│   ├── pages                   # Application Pages
-│   │   └── page-name
-│   │       ├── components/     # Page-Specifics components
-│   │       ├── data/           # Types, Texts, utils for the page
-│   │       ├── hooks/          # Hooks for logic that is not related to the User Interface
-│   │       └── index.tsx       # Interface User Code 
-│   │
-│   ├── hooks/                  # Custom Hooks for the entire project
-│   ├── providers/              # Setup and Context Providers
-│   ├── services/               # Services for communication with APIs
-│   ├── utils/                  # Utility Function
-│   ├── global.css              # Global Styles
-│   ├── main.tsx                # Main Entry File
-│   └── vite-env.d.ts           # Vite Types
-│
-│
-├── test/
-│     ├── components  
-│     ├── hooks                  # Hooks Tests
-│     ├── utils                  # Utils function tests
-│     └── page                   # Pages Tests
-│         └── nome-pagina
-│             ├── components/    # Tests Components Pages Specifics 
-│             ├── hooks/         # Tests to a page hooks
-│             └── index.test.tsx # Tests of Interface User
-│
-├── .husky/                      # Husky Setup to hooks of Git
-├── .vscode/                     # Editor Setup VS Code
-├── .gitignore                   # Files and Directories ignored by Git
-├── .prettierrc                  # Prettier Setup
-├── .prettierignore              # Files ignored by Prettier
-├── coverage/                    # Coverage Report of tests
-├── eslint.config.ts             # Eslint Setup
-├── jest.config.ts               # Jest Setup
-├── tsconfig.json                # TypeScript Setup
-├── vite.config.ts               # Vite Setup
-├── package.json                 # Dependencies and scripts of project
-└── README.md                    # Project Documentation
+src/
+├── components/          # Componentes reutilizáveis
+├── pages/              # Páginas da aplicação
+│   ├── login/          # Tela de login
+│   ├── home/           # Dashboard principal
+│   ├── create-category/ # Criar categoria
+│   ├── list-category/  # Listar categorias
+│   ├── create-cost/    # Criar gasto
+│   └── list-costs/     # Listar gastos
+├── services/           # Serviços de API
+├── hooks/              # Hooks customizados
+├── providers/          # Contextos e providers
+├── utils/              # Funções utilitárias
+└── constants/          # Constantes e rotas
 ```
 
-## Technologies Used
+## 🔒 Autenticação e Segurança
 
-- **React**: Lib to build  User Interfaces.
-- **TypeScript**: JavaScript Superset which add static type.
-- **Vite**: Fast Build Toolkit to Front Projects.
-- **TailwindCSS**: Framework CSS.
-- **Jest**: Tests Framework.
-- **ESLint**: Linting Tool to maintain code quality..
-- **Prettier**: Code Formating Tools .
+- Tokens JWT armazenados em cookies
+- Interceptors automáticos para requisições autenticadas
+- Redirecionamento automático para login em caso de token expirado
+- Rotas protegidas por autenticação
 
-## Available Scripts
+## 🧪 Testes
 
-In the `package.json` file, you can find the following scripts:
+```bash
+npm run test             # Executa todos os testes
+npm run test:coverage    # Gera relatório de cobertura
+```
 
-- `dev`: Start development server.
-- `build`: Build application .
-- `lint`: Run ESLint to check for issues problems in the code.
-- `preview`: View the build application.
-- `prepare`: Set up  Husky hooks .
-- `test`: Run the unit tests.
-
-
-
-## Tests Coverage
-
-Coverage reports are generate in the `coverage/` directory. To view the reports, open the  `index.html` file inside `coverage/lcov-report/` in your browser.
-
-
-## Licence
-
-This project is licensed under the MIT License. See the `LICENSE` file to more informations.
