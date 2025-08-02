@@ -1,21 +1,16 @@
 import React from 'react'
-import { ICreateCostView } from './types'
-import { InputPrimary } from '@components/input'
+import { ICreateCategoryView } from './types'
 import { FieldController } from '@components/field-controller'
 import { SelectPrimary } from '@components/select'
-import { Button } from '@components/button'
+import { InputPrimary } from '@components/input'
 import { formatPrice, sanitizePrice } from '@utils/formatters'
 import { IoMdArrowRoundBack } from 'react-icons/io'
+import { Button } from '@components/button'
 import { useNavigate } from 'react-router-dom'
+import { CategoryTypeEnum } from '@pages/list-category/hooks/use-list-category/types'
 
-export const CreateCostView = ({ control, onSubmit, options, isLoading, title, onRemove }: ICreateCostView) => {
+export const CreateCategoryView: React.FC<ICreateCategoryView> = ({ control, handleSubmit, title, onRemove }) => {
   const navigate = useNavigate()
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    await onSubmit()
-    navigate(-1)
-  }
 
   return (
     <>
@@ -25,40 +20,48 @@ export const CreateCostView = ({ control, onSubmit, options, isLoading, title, o
           onClick={() => navigate(-1)}>
           <IoMdArrowRoundBack size={20} className="w-10 text-black" />
         </Button>
-        <h2 className="text-lg font-medium">{title}</h2>
+        <h2 className="flex-1 text-lg font-medium">{title}</h2>
       </header>
       <main className="mx-auto my-auto flex min-h-[88vh] w-10/12 gap-5 py-5">
         <form className="flex flex-1 flex-col justify-between" onSubmit={handleSubmit}>
           <div className="flex flex-col justify-between gap-y-4">
-            <FieldController name="name" control={control} Component={InputPrimary} label="Descricao" />
+            <FieldController name="title" control={control} Component={InputPrimary} label="Titulo" />
             <FieldController
-              name="amount"
+              name="estimatedCost"
               control={control}
               Component={InputPrimary}
-              label="Saida"
+              label="Custo estimado"
               type="string"
               maskFunction={(value: string) => formatPrice(sanitizePrice(value))}
             />
             <FieldController
-              label="Categoria"
-              name="categoryId"
+              label="Tipo de custo"
+              name="type"
               control={control}
-              defaultValue="232"
               Component={SelectPrimary}
-              values={options}
+              values={[
+                {
+                  label: 'Fixo',
+                  value: CategoryTypeEnum.FIXED
+                },
+                {
+                  label: 'Variável',
+                  value: CategoryTypeEnum.VARIABLE
+                }
+              ]}
             />
           </div>
           <div>
-            <Button color="primary" className="mx-auto mt-5 w-full py-3" isLoading={isLoading} type="submit">
+            <Button color="primary" className="mx-auto mt-5 w-full py-3" type="submit">
               Salvar
             </Button>
             {onRemove && (
               <Button
-                onClick={onRemove}
-                color="primary"
+                color="secondary"
                 className="mx-auto mt-5 w-full py-3"
-                isLoading={isLoading}
-                type="button">
+                isLoading={false}
+                type="button"
+                onClick={onRemove}>
                 Excluir
               </Button>
             )}

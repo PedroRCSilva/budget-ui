@@ -12,13 +12,14 @@ export const SelectPrimary = ({
   label,
   error,
   placeholder,
-
+  value,
   ...props
 }: ISelectPrimary) => {
   return (
     <div>
       {label && <Label value={label} error={error} />}
       <Select
+        value={value}
         onValueChange={value => {
           if (onChange) onChange(value)
           if (onChangeValue) onChangeValue(value)

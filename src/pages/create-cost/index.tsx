@@ -39,7 +39,7 @@ export const CreateCost = () => {
 
   return (
     <CreateCostView
-      nome={'CreateCost'}
+      title={'Cadastrar Saída Financeira'}
       control={control}
       isLoading={isLoading}
       onSubmit={handleSubmit(onSubmit)}

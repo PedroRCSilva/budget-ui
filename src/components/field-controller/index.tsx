@@ -16,6 +16,7 @@ export const FieldController = <T extends FieldValues, N extends Path<T>, P>({
       render={({ field, fieldState }) => {
         const props = {
           ...rest,
+          value: field.value,
           error: fieldState.error
         }
 

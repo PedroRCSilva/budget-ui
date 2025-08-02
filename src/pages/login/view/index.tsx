@@ -1,4 +1,4 @@
-import React, { FormEvent } from 'react'
+import React from 'react'
 import { ILoginView } from './types'
 import { InputPrimary } from '@components/input'
 import { Button } from '@components/button'
@@ -9,14 +9,8 @@ import { useNavigate } from 'react-router-dom'
 export const LoginView: React.FC<ILoginView> = ({ control, onSubmit }) => {
   const navigate = useNavigate()
 
-  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    try {
-      await onSubmit()
-      navigate('/gerenciamento')
-    } catch {
-      console.error('Houve um erro ao realizar o login')
-    }
+  const handleLogin = () => {
+    navigate('/gerenciamento')
   }
 
   return (
@@ -36,7 +30,12 @@ export const LoginView: React.FC<ILoginView> = ({ control, onSubmit }) => {
             Entre na sua conta para gerenciar suas finanças de forma simples e inteligente.
           </p>
         </div>
-        <form className="mt-3 flex flex-col gap-7" onSubmit={handleLogin}>
+        <form
+          className="mt-3 flex flex-col gap-7"
+          onSubmit={e => {
+            e.preventDefault()
+            onSubmit(handleLogin)
+          }}>
           <FieldController control={control} Component={InputPrimary} label="Email" name="email" />
           <FieldController control={control} Component={InputPrimary} label="Senha" type="password" name="password" />
           <Button color="primary" type="submit">

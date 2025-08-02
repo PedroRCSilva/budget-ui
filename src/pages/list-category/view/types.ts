@@ -9,4 +9,5 @@ export interface ICategoryWithCosts {
 export interface IListCategoryView {
   categories: ICategoryWithCosts[]
   redirectCost: (id: string) => void
+  redirectEditCategory: (id: string) => void
 }

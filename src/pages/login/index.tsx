@@ -13,14 +13,18 @@ export const Login = () => {
 
   const { mutationAsync } = useLogin()
 
-  const onSubmit = async (data: z.infer<typeof schemaLogin>) => {
+  const onSubmit = async (data: z.infer<typeof schemaLogin>, callbackFn?: () => void) => {
     const response = await mutationAsync({
       login: data.email,
       password: data.password
     })
-
     setCookie('access_token', response.data.token)
+    if (callbackFn) {
+      callbackFn()
+    }
   }
 
-  return <LoginView nome={'Login'} control={control} onSubmit={handleSubmit(onSubmit)} />
+  const handleSubmitForm = (callbackFn?: () => void) => handleSubmit(data => onSubmit(data, callbackFn))()
+
+  return <LoginView control={control} onSubmit={handleSubmitForm} />
 }

@@ -11,7 +11,7 @@ export const useFilterCategory = () => {
     const monthFind = values.find(
       value => value.START_DATE === searchParams.get('startDate') && value.END_DATE === searchParams.get('endDate')
     )
-    if (!monthFind) return MonthEnum.JUNE
+    if (!monthFind) return values[new Date().getMonth()]
 
     return MonthEnum[monthFind.NAME]
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -23,6 +23,7 @@ export const useFilterCategory = () => {
       queryParams.set('startDate', month.START_DATE)
       queryParams.set('endDate', month.END_DATE)
     }
+
     if (page) queryParams.set('page', page.toString())
     if (size) queryParams.set('size', size.toString())
 
