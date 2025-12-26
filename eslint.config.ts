@@ -13,7 +13,7 @@ export default [
   {
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
-      parser: tsParser, // 👉 parser para TS!
+      parser: tsParser,
       ecmaVersion: 2020,
       sourceType: 'module',
       globals: globals.browser,
