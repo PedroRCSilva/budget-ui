@@ -16,8 +16,8 @@ export const Login = () => {
 
   const onSubmit = async (data: z.infer<typeof schemaLogin>, callbackFn?: () => void) => {
     toast.success({
-      description:"teste",
-      title:"sdsdsd"
+      description: 'teste',
+      title: 'sdsdsd'
     })
     const response = await mutationAsync({
       login: data.email,

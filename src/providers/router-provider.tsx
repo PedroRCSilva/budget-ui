@@ -5,8 +5,9 @@ import { Toaster } from '@components/ui/toaster'
 const routerConfig = createBrowserRouter([LOGIN_ROUTER, MANAGEMENT_ROUTER, INTERNAL_ERROR_ROUTER])
 export const RouterProvider = () => {
   return (
-  <>
-    <Provider router={routerConfig} />
-    <Toaster />
-  </>)
+    <>
+      <Provider router={routerConfig} />
+      <Toaster />
+    </>
+  )
 }
