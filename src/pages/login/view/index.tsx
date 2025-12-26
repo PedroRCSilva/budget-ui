@@ -1,9 +1,9 @@
 import React from 'react'
 import { ILoginView } from './types'
-import { InputPrimary } from '@components/input'
-import { Button } from '@components/button'
+import { InputPrimary } from '@components/ui/input'
+import { Button } from '@components/ui/button'
 import { IoIosWallet, IoLogoGoogle } from 'react-icons/io'
-import { FieldController } from '@components/field-controller'
+import { FieldController } from '@components/ui/field-controller'
 import { useNavigate } from 'react-router-dom'
 
 export const LoginView: React.FC<ILoginView> = ({ control, onSubmit }) => {

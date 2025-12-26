@@ -1,6 +1,6 @@
 import React from 'react'
 import { IHomeView, MonthEnum } from './types'
-import { Button } from '@components/button'
+import { Button } from '@components/ui/button'
 import { IoMdAdd } from 'react-icons/io'
 import { SegmentedControl } from '../components/segmented-control'
 import { Outlet, useNavigate } from 'react-router-dom'

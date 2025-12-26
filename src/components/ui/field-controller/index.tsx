@@ -1,7 +1,7 @@
 import React from 'react'
 import { Controller, FieldValues, Path } from 'react-hook-form'
 import { FieldControllerProps } from './types'
-import { FieldError } from '@components/field-error'
+import { FieldError } from '@components/ui/field-error'
 
 export const FieldController = <T extends FieldValues, N extends Path<T>, P>({
   name,

@@ -1,7 +1,7 @@
 import React from 'react'
 import { IListCostsView } from './types'
-import { CardItem } from '@components/card-item'
-import { Button } from '@components/button'
+import { CardItem } from '@components/ui/card-item'
+import { Button } from '@components/ui/button'
 import { IoMdArrowRoundBack } from 'react-icons/io'
 import { useNavigate } from 'react-router-dom'
 
