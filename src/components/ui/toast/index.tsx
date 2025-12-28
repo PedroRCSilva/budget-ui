@@ -50,7 +50,7 @@ export const Toast: React.FC<{
   const [state, setState] = useState<'open' | 'closed'>('open')
 
   const handleClose = useCallback(() => {
-    setTimeout(() => toast.remove(id), 500)
+    setTimeout(() => toast.remove(id), 450)
     setState('closed')
   }, [id])
 
@@ -65,8 +65,8 @@ export const Toast: React.FC<{
         className: 'data-[state=open]:animate-toast-in data-[state=closed]:animate-toast-out animation-duration-[500ms]'
       })}
       data-state={state}>
-      <div className="flex gap-2">
-        <div className="flex items-center">{Icon && <Icon className="text-white" />}</div>
+      <div className="flex gap-4">
+        <div className="flex items-center">{Icon && <Icon className="text-white" size={20} />}</div>
         <div className="flex flex-1 flex-col">
           <span className={titleText()}>{title}</span>
           <span className={descriptionText()}>{description}</span>
