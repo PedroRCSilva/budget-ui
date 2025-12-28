@@ -1,6 +1,8 @@
+import { IoIosWarning } from 'react-icons/io'
 import { toastStore } from './context'
 import { IToastFn, ToastProps } from './types'
-import { IoIosCheckmarkCircle, IoMdWarning } from 'react-icons/io'
+import { IoCheckmarkSharp } from 'react-icons/io5'
+import { MdError } from 'react-icons/md'
 
 const generateId = () => crypto.randomUUID()
 
@@ -10,7 +12,7 @@ export const toast: IToastFn = {
     toastStore.add({
       ...data,
       id,
-      icon: IoIosCheckmarkCircle,
+      icon: IoIosWarning,
       variants: {
         theme: 'warning'
       }
@@ -21,7 +23,7 @@ export const toast: IToastFn = {
     toastStore.add({
       ...data,
       id,
-      icon: IoMdWarning,
+      icon: IoCheckmarkSharp,
       variants: {
         theme: 'success'
       }
@@ -32,7 +34,7 @@ export const toast: IToastFn = {
     toastStore.add({
       ...data,
       id,
-
+      icon: MdError,
       variants: {
         theme: 'destructive'
       }
