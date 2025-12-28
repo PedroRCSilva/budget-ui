@@ -15,17 +15,20 @@ export const Login = () => {
   const { mutationAsync } = useLogin()
 
   const onSubmit = async (data: z.infer<typeof schemaLogin>, callbackFn?: () => void) => {
-    toast.success({
-      description: 'teste',
-      title: 'sdsdsd'
-    })
-    const response = await mutationAsync({
-      login: data.email,
-      password: data.password
-    })
-    setCookie('access_token', response.data.token)
-    if (callbackFn) {
-      callbackFn()
+    try {
+      const response = await mutationAsync({
+        login: data.email,
+        password: data.password
+      })
+      setCookie('access_token', response.data.token)
+      if (callbackFn) {
+        callbackFn()
+      }
+    } catch {
+      toast.success({
+        title: 'Email e/ou senha incorretos',
+        durationMs: 2000
+      })
     }
   }
 
