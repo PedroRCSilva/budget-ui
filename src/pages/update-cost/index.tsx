@@ -7,6 +7,8 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import z from 'zod'
 import { useNavigate, useParams } from 'react-router-dom'
+import { toast } from '@lib/toast'
+import { AxiosError } from 'axios'
 
 export const UpdateCost = () => {
   const { categories } = useCategory()
@@ -22,13 +24,36 @@ export const UpdateCost = () => {
   }))
 
   const { mutationAsync: removeMutationAsync } = useRemoveCost()
+  const { cost } = useCostById(id || '')
 
   const removeCost = async () => {
     if (!id) throw new Error('ID is required for removing cost')
     setIsLoading(true)
-    await removeMutationAsync(id)
-    navigate('/gerenciamento')
-    setIsLoading(false)
+    try {
+      await removeMutationAsync(id)
+      navigate('/gerenciamento')
+      toast.success({
+        durationMs: 5000,
+        title: 'Ação concluída com sucesso!',
+        description: `O custo ${cost?.description} foi removido`
+      })
+    } catch (error: unknown) {
+      const status = error instanceof AxiosError ? error.status : null
+
+      if (status === 404) {
+        toast.destructive({
+          title: 'Não foi possível prosseguir com a exclusão',
+          description: 'O custo informado não existe',
+          durationMs: 8000
+        })
+        return
+      }
+      toast.destructive({
+        title: 'Não foi possível prosseguir com a exclusão',
+        description: 'Tente novamente mais tarde.',
+        durationMs: 8000
+      })
+    }
   }
 
   const onSubmit = async (data: z.infer<typeof schemaCost>) => {
@@ -46,8 +71,6 @@ export const UpdateCost = () => {
     await mutationAsync(payload)
     setIsLoading(false)
   }
-
-  const { cost } = useCostById(id || '')
 
   const { control, handleSubmit } = useForm({
     resolver: zodResolver(schemaCost),
