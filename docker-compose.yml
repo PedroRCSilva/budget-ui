@@ -1,0 +1,19 @@
+services:
+  budget-api:
+    image: 'pedrorcsilva9/budget-api:main'
+    ports:
+      - '8080:8004'
+    environment:
+      DB_NAME: 'mydatabase'
+      DB_SERVER: postgres
+      DB_PORT: 5432
+    depends_on:
+      - postgres
+  postgres:
+    image: 'postgres:16.2'
+    environment:
+      - 'POSTGRES_DB=mydatabase'
+      - 'POSTGRES_PASSWORD=secret'
+      - 'POSTGRES_USER=myuser'
+    ports:
+      - '5432:5432'
