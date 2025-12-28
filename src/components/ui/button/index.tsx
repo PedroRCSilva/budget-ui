@@ -5,7 +5,7 @@ import { IButton } from './type'
 const buttonVariants = tv({
   slots: {
     button:
-      'group px-4 py-4 border rounded-lg cursor-pointer font-medium disabled:bg-gray-200 disabled:border-gray-200 disabled:text-white disabled:cursor-not-allowed',
+      'group relative px-4 py-4 border rounded-lg cursor-pointer font-medium disabled:bg-gray-200 disabled:border-gray-200 disabled:text-white disabled:cursor-not-allowed',
     loading: 'absolute inset-0 flex items-center justify-center'
   },
   variants: {
@@ -23,6 +23,9 @@ const buttonVariants = tv({
         loading: 'border-t-transparent border-r-transparent border-b-white'
       }
     }
+  },
+  defaultVariants: {
+    color: 'primary'
   }
 })
 
