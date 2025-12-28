@@ -5,6 +5,7 @@ import { schemaLogin } from './data/schema'
 import { useLogin } from '@hooks'
 import z from 'zod'
 import { setCookie } from '@utils/cookies'
+import { toast } from '@lib/toast'
 
 export const Login = () => {
   const { control, handleSubmit } = useForm({
@@ -14,6 +15,10 @@ export const Login = () => {
   const { mutationAsync } = useLogin()
 
   const onSubmit = async (data: z.infer<typeof schemaLogin>, callbackFn?: () => void) => {
+    toast.success({
+      description:"teste",
+      title:"sdsdsd"
+    })
     const response = await mutationAsync({
       login: data.email,
       password: data.password
