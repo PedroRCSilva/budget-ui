@@ -1,7 +1,6 @@
 import axios, { AxiosError } from 'axios'
-
 const api = axios.create({
-  baseURL: 'http://192.168.18.7:8004/api',
+  baseURL: import.meta.env.VITE_API_URL,
   timeout: 360
 })
 

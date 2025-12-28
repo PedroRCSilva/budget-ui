@@ -12,6 +12,7 @@ export const CreateCostView = ({ control, onSubmit, options, isLoading, title, o
   const navigate = useNavigate()
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    
     e.preventDefault()
     await onSubmit()
     navigate(-1)

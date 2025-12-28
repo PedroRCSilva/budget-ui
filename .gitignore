@@ -24,3 +24,4 @@ coverage
 *.sln
 *.sw?
 tsconfig.tsbuildinfo
+.env

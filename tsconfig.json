@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
+    "target": "esnext",
+    "module": "esnext",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -15,18 +15,20 @@
       "@services": ["src/services/index"],
       "@constants/*": ["src/constants/*"],
       "@hooks": ["src/hooks/index"],
-      "@models/*": ["src/models/*"]
+      "@models/*": ["src/models/*"],
+      "@lib/*": ["src/lib/*"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "allowImportingTsExtensions": true
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx"  
   },
+  
   "include": ["src", "test"]
 }
