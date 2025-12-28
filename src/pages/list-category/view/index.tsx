@@ -1,6 +1,6 @@
 import React from 'react'
 import { IListCategoryView } from './types'
-import { CardItem } from '@components/card-item'
+import { CardItem } from '@components/ui/card-item'
 
 export const ListCategoryView: React.FC<IListCategoryView> = ({ categories, redirectCost, redirectEditCategory }) => {
   return (

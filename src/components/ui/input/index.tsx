@@ -1,6 +1,6 @@
 import React from 'react'
 import { Input } from '@components/shadcn/input'
-import { Label } from '@components/label'
+import { Label } from '@components/ui/label'
 import { IInputPrimary } from './types'
 import { cn } from '@utils/cn'
 

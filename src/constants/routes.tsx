@@ -1,4 +1,4 @@
-import { Navbar } from '@components/navbar'
+import { Navbar } from '@components/ui/navbar'
 import { CreateCategory } from '@pages/create-category'
 import { CreateCost } from '@pages/create-cost'
 import { Home } from '@pages/home'

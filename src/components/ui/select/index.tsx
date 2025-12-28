@@ -1,7 +1,7 @@
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@components/shadcn/select'
 import { ISelectPrimary } from './types'
 import { cn } from '@utils/cn'
-import { Label } from '@components/label'
+import { Label } from '@components/ui/label'
 
 export const SelectPrimary = ({
   values,
