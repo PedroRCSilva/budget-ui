@@ -11,12 +11,6 @@ import { useNavigate } from 'react-router-dom'
 export const CreateCostView = ({ control, onSubmit, options, isLoading, title, onRemove }: ICreateCostView) => {
   const navigate = useNavigate()
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    await onSubmit()
-    navigate(-1)
-  }
-
   return (
     <>
       <header className="flex items-center gap-2 px-8 py-6">
@@ -28,7 +22,7 @@ export const CreateCostView = ({ control, onSubmit, options, isLoading, title, o
         <h2 className="text-lg font-medium">{title}</h2>
       </header>
       <main className="mx-auto my-auto flex min-h-[88vh] w-10/12 gap-5 py-5">
-        <form className="flex flex-1 flex-col justify-between" onSubmit={handleSubmit}>
+        <form className="flex flex-1 flex-col justify-between" onSubmit={onSubmit}>
           <div className="flex flex-col justify-between gap-y-4">
             <FieldController name="name" control={control} Component={InputPrimary} label="Descricao" />
             <FieldController

@@ -7,10 +7,13 @@ import { useCreateCost } from '@hooks'
 import z from 'zod'
 import { sanitizePrice } from '@utils/formatters'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { MANAGEMENT_ROUTER } from '@constants/routes'
 
 export const CreateCost = () => {
   const { categories } = useCategory()
   const { mutationAsync } = useCreateCost()
+  const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false)
 
   const options = categories.content.map(el => ({
@@ -30,6 +33,8 @@ export const CreateCost = () => {
     setIsLoading(true)
     await mutationAsync(payload)
     setIsLoading(false)
+    const url = MANAGEMENT_ROUTER.path ?? ''
+    navigate('/' + url)
   }
 
   const { control, handleSubmit } = useForm({
