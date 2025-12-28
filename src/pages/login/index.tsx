@@ -6,6 +6,7 @@ import { useLogin } from '@hooks'
 import z from 'zod'
 import { setCookie } from '@utils/cookies'
 import { toast } from '@lib/toast'
+import { AxiosError } from 'axios'
 
 export const Login = () => {
   const { control, handleSubmit } = useForm({
@@ -24,10 +25,21 @@ export const Login = () => {
       if (callbackFn) {
         callbackFn()
       }
-    } catch {
-      toast.success({
-        title: 'Email e/ou senha incorretos',
-        durationMs: 2000
+    } catch (error: unknown) {
+      if (!(error instanceof AxiosError)) return
+
+      if (error.status == 403) {
+        toast.destructive({
+          title: 'Email e/ou senha incorretos',
+          description: 'Certifique-se que esta colocando o email e senha cadastrado',
+          durationMs: 8000
+        })
+        return
+      }
+      toast.destructive({
+        title: 'Houve um erro ao realizar a requisição',
+        description: 'Tente novamente mais tarde',
+        durationMs: 8000
       })
     }
   }
